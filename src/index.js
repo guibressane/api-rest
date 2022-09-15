@@ -64,13 +64,20 @@ server.get('/somar-rota/:n1/:n2' , (req, resp) => {
 })
    
 server.post('/maiusculo' , (req, resp) => {
+    try {
+        let frase = req.body.frase;
+        let x = frase.toUpperCase();
 
-    let frase = req.body.frase;
-    let x = frase.toUpperCase();
+        resp.send({
+            frase: x
+        }) 
+    }
 
-    resp.send({
-        frase: x
-    }) 
+    catch (err) {
+        resp.status(500).send({
+            erro: 'Ocorreu um erro.'
+        })
+    }
 
 })
     
