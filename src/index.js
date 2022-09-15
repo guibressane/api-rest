@@ -63,5 +63,15 @@ server.get('/somar-rota/:n1/:n2' , (req, resp) => {
     
 })
    
+server.post('/maiusculo' , (req, resp) => {
+
+    let frase = req.body.frase;
+    let x = frase.toUpperCase();
+
+    resp.send({
+        frase: x
+    }) 
+
+})
     
 server.listen(process.env.PORT, () => console.log('API subiu na porta ' + process.env.PORT))
